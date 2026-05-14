@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1048533340884",
+    "project_id": "exhibitspace-e0a06",
+    "storage_bucket": "exhibitspace-e0a06.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048533340884:android:87e6a05bd53b98db74a141",
+        "android_client_info": {
+          "package_name": "com.unikl.exhibit_space"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCz9bbSiUaCu2-nJ9Tp5TdUrf31aPo0PKo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
