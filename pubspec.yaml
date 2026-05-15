@@ -28,7 +28,6 @@ dependencies:
   flutter_svg: ^2.0.10+1
   cached_network_image: ^3.3.1
   shimmer: ^3.0.0
-  fluttertoast: ^8.2.4
 
   # Caching & Storage
   shared_preferences: ^2.2.2
