@@ -39,7 +39,6 @@ void main() async {
 final _router = GoRouter(
   initialLocation: '/',
   routes: [
-    // Guest
     GoRoute(
       path: '/',
       builder: (_, __) => const EventDirectoryScreen(),
@@ -47,7 +46,12 @@ final _router = GoRouter(
     GoRoute(
       path: '/event/:id',
       builder: (context, state) {
-        final event = state.extra as EventModel;
+        final event = state.extra as EventModel?;
+        if (event == null) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
         return EventDetailScreen(event: event);
       },
     ),
@@ -55,8 +59,6 @@ final _router = GoRouter(
       path: '/login-prompt',
       builder: (_, __) => const LoginPromptScreen(),
     ),
-
-    // Auth
     GoRoute(
       path: '/login',
       builder: (_, __) => const LoginScreen(),
@@ -65,8 +67,6 @@ final _router = GoRouter(
       path: '/register',
       builder: (_, __) => const RegisterScreen(),
     ),
-
-    // Exhibitor
     GoRoute(
       path: '/exhibitor',
       builder: (_, __) => const ExhibitorHomeScreen(),
@@ -122,8 +122,6 @@ final _router = GoRouter(
       path: '/exhibitor/applications',
       builder: (_, __) => const MyApplicationsScreen(),
     ),
-
-    // Organizer
     GoRoute(
       path: '/organizer',
       builder: (_, __) => const OrganizerDashboardScreen(),
@@ -146,8 +144,6 @@ final _router = GoRouter(
       path: '/organizer/review',
       builder: (_, __) => const ApplicationReviewScreen(),
     ),
-
-    // Admin
     GoRoute(
       path: '/admin',
       builder: (_, __) => const AdminDashboardScreen(),

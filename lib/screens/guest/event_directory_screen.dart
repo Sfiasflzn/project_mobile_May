@@ -32,7 +32,6 @@ class _EventDirectoryScreenState extends State<EventDirectoryScreen> {
       ),
       body: Column(
         children: [
-          // Search bar
           Padding(
             padding: const EdgeInsets.all(16),
             child: TextField(
@@ -47,8 +46,6 @@ class _EventDirectoryScreenState extends State<EventDirectoryScreen> {
               ),
             ),
           ),
-
-          // Filter chips
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -67,8 +64,6 @@ class _EventDirectoryScreenState extends State<EventDirectoryScreen> {
             ),
           ),
           const SizedBox(height: 8),
-
-          // Events list
           Expanded(
             child: StreamBuilder<List<EventModel>>(
               stream: _eventService.getPublishedEvents(),
@@ -82,7 +77,6 @@ class _EventDirectoryScreenState extends State<EventDirectoryScreen> {
 
                 var events = snapshot.data!;
 
-                // Filter by search
                 if (_searchQuery.isNotEmpty) {
                   events = events
                       .where((e) => e.name
@@ -91,7 +85,6 @@ class _EventDirectoryScreenState extends State<EventDirectoryScreen> {
                       .toList();
                 }
 
-                // Filter by status
                 if (_filter != 'All') {
                   events = events
                       .where((e) =>
@@ -103,7 +96,10 @@ class _EventDirectoryScreenState extends State<EventDirectoryScreen> {
                   itemCount: events.length,
                   itemBuilder: (ctx, i) => EventCardWidget(
                     event: events[i],
-                    onTap: () => context.push('/event/${events[i].id}'),
+                    onTap: () => context.push(
+                      '/event/${events[i].id}',
+                      extra: events[i],
+                    ),
                   ),
                 );
               },
